@@ -1,0 +1,41 @@
+{
+    "url": "https://after7.nl/collections/signature-a7-items",
+    "formats": [
+        {
+            "type": "json",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["price", "product_url", "name", "description", "image_name", "image_url"],
+                            "properties": {
+                                "price": {
+                                    "type": "string"
+                                },
+                                "product_url": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "image_name": {
+                                    "type": "string"
+                                },
+                                "image_url": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": ["products"]
+            }
+        }
+    ]
+}
