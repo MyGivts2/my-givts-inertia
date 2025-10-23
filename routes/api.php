@@ -26,6 +26,27 @@ Route::post('/products', function (Request $request) {
     ]);
 });
 
+Route::post('/products/create', function (Request $request) {
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'category' => 'nullable|string|max:255',
+        'gender' => 'nullable|string|max:50',
+        'image_url' => 'nullable|url|max:2048',
+        'image_name' => 'nullable|string|max:255',
+        'product_url' => 'nullable|url|max:2048',
+        'price' => 'nullable|numeric|min:0',
+        'vendor' => 'nullable|string|max:255',
+    ]);
+
+    $product = Product::create($validated);
+
+    return response()->json([
+        'message' => 'Product created successfully',
+        'product' => $product,
+    ], 201);
+})->middleware('api.key');
+
 
 Route::post('/search', function (Request $request) {
     $query = $request->input('query');
